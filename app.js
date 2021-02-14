@@ -42,8 +42,8 @@ const getImages = (query) => {
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add('added'); 
-  
+  element.classList.add('added');
+
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
@@ -52,6 +52,9 @@ const selectItem = (event, img) => {
     sliders.pop(img);
     // alert('Hey, Already added !')
   }
+
+  console.log(sliders.length);
+
 }
 var timer
 
@@ -139,6 +142,8 @@ sliderBtn.addEventListener('click', () => {
 })
 
 search.addEventListener('keyup', event => {
+  document.querySelector('.main').style.display = 'none';
+  clearInterval(timer);
   if (event.keyCode === 13)
     getImages(search.value);
 })
